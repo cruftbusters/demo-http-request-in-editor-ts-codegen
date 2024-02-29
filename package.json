@@ -2,13 +2,16 @@
   "name": "demo-http-request-in-editor-ts-codegen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/cli": "^7.23.9",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-typescript": "^7.23.3",
     "typescript": "^5.3.3"
   }
 }
