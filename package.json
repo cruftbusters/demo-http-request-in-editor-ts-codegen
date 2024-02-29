@@ -2,9 +2,11 @@
   "name": "demo-http-request-in-editor-ts-codegen",
   "version": "1.0.0",
   "description": "",
-  "main": "index.ts",
+  "main": "main.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "babel --out-file build/bundle.js main.ts",
+    "main": "ts-node main.ts"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +15,8 @@
     "@babel/core": "^7.24.0",
     "@babel/preset-typescript": "^7.23.3",
     "typescript": "^5.3.3"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2"
   }
 }
