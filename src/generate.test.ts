@@ -4,14 +4,12 @@ let trim_indent = require('./trim_indent')
 test('default', () => {
     expect(generate(``)).toBe(trim_indent(`
     let axios = require('axios')
-    module.exports = {}
     `))
 })
 
 test('request without name', () => {
     expect(generate(`GET https://google.com`)).toBe(trim_indent(`
     let axios = require('axios')
-    module.exports = {}
     `))
 })
 
@@ -23,8 +21,7 @@ test('trailing name', () => {
 
     let expected = trim_indent(`
     let axios = require('axios')
-    module.exports = {}
-    module.exports.getGoogle = () => axios.get('https://google.com')
+    exports.getGoogle = () => axios.get('https://google.com')
     `);
 
     expect(actual).toBe(expected)
@@ -38,8 +35,7 @@ test('get url', () => {
 
     let expected = trim_indent(`
     let axios = require('axios')
-    module.exports = {}
-    module.exports.getGoogle = () => axios.get('https://google.com')
+    exports.getGoogle = () => axios.get('https://google.com')
     `);
 
     expect(actual).toBe(expected)
@@ -54,8 +50,7 @@ test('post url', () => {
 
     let expected = trim_indent(`
     let axios = require('axios')
-    module.exports = {}
-    module.exports.postGoogle = () => axios.post('https://google.com')
+    exports.postGoogle = () => axios.post('https://google.com')
     `);
 
     expect(actual).toBe(expected)
@@ -67,8 +62,7 @@ test('post url', () => {
 
     let expected_1 = trim_indent(`
     let axios = require('axios')
-    module.exports = {}
-    module.exports.getGoogle = () => axios.get('http://google.com')
+    exports.getGoogle = () => axios.get('http://google.com')
     `);
 
     expect(actual_1).toBe(expected_1)

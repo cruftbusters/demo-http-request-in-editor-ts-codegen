@@ -5,10 +5,7 @@ interface Binding {
 }
 
 function generate(string: string) {
-    let result = [
-        `let axios = require('axios')`,
-        'module.exports = {}',
-    ]
+    let result = [`let axios = require('axios')`,]
     let maybe_request = to_maybe_request(string.split('\n'))
     if (maybe_request.length > 0) {
         let [request] = maybe_request
@@ -37,7 +34,7 @@ function to_maybe_request(lines: string[]) {
 }
 
 function to_typescript({name, verb, url}: Binding) {
-    return `module.exports.${name} = () => axios.${verb}('${url}')`
+    return `exports.${name} = () => axios.${verb}('${url}')`
 }
 
 module.exports = generate
