@@ -5,7 +5,10 @@ interface Binding {
 }
 
 function generate(string: string) {
-    let result = ['module.exports = {}']
+    let result = [
+        `let axios = require('axios')`,
+        'module.exports = {}',
+    ]
     let maybe_request = to_maybe_request(string.split('\n'))
     if (maybe_request.length > 0) {
         let [request] = maybe_request
