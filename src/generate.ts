@@ -32,8 +32,7 @@ function to_maybe_request(lines: string[]) {
     for (let line of lines) {
         if (line.startsWith('# name : ')) {
             request.name = line.split(' ')[3]
-        }
-        if (line.startsWith('GET ') || line.startsWith('POST ')) {
+        } else if (line.startsWith('GET ') || line.startsWith('POST ')) {
             let parts = line.split(' ')
             request.verb = parts[0].toLowerCase()
             request.url = parts[1]
