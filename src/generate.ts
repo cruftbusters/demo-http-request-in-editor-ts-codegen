@@ -6,10 +6,19 @@ interface Binding {
 
 function generate(string: string) {
     let result = [`let axios = require('axios')`,]
-    let maybe_request = to_maybe_request(string.split('\n'))
-    if (maybe_request.length > 0) {
-        let [request] = maybe_request
-        result.push(to_typescript(request))
+    let lines = string.split('\n');
+    let group = []
+    for (let index = 0; index <= lines.length; index++) {
+        if (index == lines.length || lines[index] === '###') {
+            let maybe_request = to_maybe_request(group)
+            if (maybe_request.length > 0) {
+                let [request] = maybe_request
+                result.push(to_typescript(request))
+            }
+            group = []
+        } else {
+            group.push(lines[index])
+        }
     }
     return result.join('\n')
 }

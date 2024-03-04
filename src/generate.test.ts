@@ -27,43 +27,20 @@ test('trailing name', () => {
     expect(actual).toBe(expected)
 })
 
-test('get url', () => {
+test('verb url', () => {
     let actual = generate(trim_indent(`
     # name : getGoogle
     GET https://google.com
-    `));
-
-    let expected = trim_indent(`
-    let axios = require('axios')
-    exports.getGoogle = () => axios.get('https://google.com')
-    `);
-
-    expect(actual).toBe(expected)
-})
-
-
-test('post url', () => {
-    let actual = generate(trim_indent(`
+    ###
     # name : postGoogle
     POST https://google.com
     `));
 
     let expected = trim_indent(`
     let axios = require('axios')
+    exports.getGoogle = () => axios.get('https://google.com')
     exports.postGoogle = () => axios.post('https://google.com')
     `);
 
     expect(actual).toBe(expected)
-
-    let actual_1 = generate(trim_indent(`
-    GET http://google.com
-    # name : getGoogle
-    `));
-
-    let expected_1 = trim_indent(`
-    let axios = require('axios')
-    exports.getGoogle = () => axios.get('http://google.com')
-    `);
-
-    expect(actual_1).toBe(expected_1)
 })
